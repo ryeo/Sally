@@ -3,6 +3,8 @@ package in.wptrafficanalyzer.speechrecognitiondemo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,6 +12,7 @@ import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -84,7 +87,11 @@ public class MainActivity extends Activity {
 	        case SPEECHTOTEXT: 
 	            if (resultCode == RESULT_OK && null != data) {	 
 	                ArrayList<String> text = data
-	                        .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);	 
+	                        .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);	
+	                
+	                Gson gson = new Gson();
+	                String jsonNames = gson.toJson(text);
+	                Log.i("JSON CMD : ", jsonNames);
 	         
 	                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, text);
 	                
