@@ -22,6 +22,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
+	//rob
+	@SuppressWarnings("unused")
 	private SpeechRecognizer speechRecognizer; 
 	private final int SPEECHTOTEXT = 1;
 		
