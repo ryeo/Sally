@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	//rob
+	//annother change
 	@SuppressWarnings("unused")
 	private SpeechRecognizer speechRecognizer; 
 	private final int SPEECHTOTEXT = 1;
