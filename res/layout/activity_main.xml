@@ -7,8 +7,18 @@
         android:id="@+id/btn_speak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"                
+        android:layout_alignLeft="@id/btn_speak"
+        android:layout_centerHorizontal="true"
         android:text="@string/str_btn_speak" />
+
+    <Button
+        android:id="@+id/reader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/reader"
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@id/btn_speak"
+        android:text="@string/Reader" />
     
     <ListView 
 	    android:id="@+id/lv_text"

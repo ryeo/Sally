@@ -3,6 +3,9 @@ package in.wptrafficanalyzer.speechrecognitiondemo;
 import java.util.ArrayList;
 import java.util.List;
 
+//import org.ndeftools.boilerplate.AndroidNfcActivity;
+//import org.ndeftools.boilerplate.DefaultNfcReaderActivity;
+
 import com.google.gson.Gson;
 
 import android.app.Activity;
@@ -22,13 +25,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
-	//rob
-	//annother change
-	//rob
-	//rob
-	//rob
-	//rob
-	//rob
+	
+	private static final String TAG = "Speak";
 
 	@SuppressWarnings("unused")
 	private SpeechRecognizer speechRecognizer; 
@@ -116,4 +114,11 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }   
+    
+    public void reader(View view) {
+    	Log.d(TAG, "Show reader");
+    	
+    	Intent intent = new Intent(this, DefaultNfcReaderActivity.class);
+    	startActivity(intent);
+    }
 }
