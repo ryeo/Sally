@@ -108,6 +108,7 @@
     <string name="writer">Tag writer</string>
     <string name="reader">Reader</string>
     <string name="beamer">Beam writer</string>
+    <string name="reader_fcn">reader</string>
     
 
 </resources>

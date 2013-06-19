@@ -18,6 +18,7 @@
         android:layout_alignRight="@id/reader"
         android:layout_centerHorizontal="true"
         android:layout_toRightOf="@id/btn_speak"
+        android:onClick="@string/reader_fcn"
         android:text="@string/Reader" />
     
     <ListView 
