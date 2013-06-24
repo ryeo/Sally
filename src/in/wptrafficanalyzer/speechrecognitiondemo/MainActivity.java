@@ -141,10 +141,11 @@ public class MainActivity extends Activity {
 	                if (channel != null){
 	                	for(int k = 0; k < text.size(); k++){
 	                		Log.i("JSON GET First", text.get(k));
-	                		
-	                		String sub = "subscribe";
-	                		
-	                		if (text.get(k).toString() == sub){
+	                	
+	                		String result = String.valueOf(text.get(k).toString().compareTo("subscribe"));
+	                		Log.i("JSON RESULT", result);
+	                		                		
+	                		if (text.get(k).toString().compareTo("subscribe") ==0){
 	                			Log.i("JSON IN SUBSCRIBE", " ");
 	                			subscribe(channel);
 	                		}else{
