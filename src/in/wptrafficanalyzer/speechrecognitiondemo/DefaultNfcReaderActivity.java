@@ -31,6 +31,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -43,14 +44,19 @@ import android.widget.Toast;
  *
  */
 
+@SuppressWarnings("unused")
 public class DefaultNfcReaderActivity extends NfcReaderActivity {
 
 	private static final String TAG = DefaultNfcReaderActivity.class.getName();
 	
 	protected Message message;
+
+	//public static String channel;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		
+		
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.reader);
@@ -93,7 +99,14 @@ public class DefaultNfcReaderActivity extends NfcReaderActivity {
 				} else if(record instanceof ExternalTypeRecord) {
 					// ..
 				} else if(record instanceof TextRecord) {
-					// ..
+					// ROB
+					TextRecord textRecord = (TextRecord)record;
+					if(textRecord.hasText()) {
+						//TextView textView = (TextView) view.findViewById(R.id.textMessageValue);
+						//textView.setText(textRecord.getText());
+						Log.i(TAG, "Text Record Message: " + textRecord.getText());
+						MainActivity.channel= textRecord.getText().toString();
+					}
 				} else { // more else
 					// ..
 				}
