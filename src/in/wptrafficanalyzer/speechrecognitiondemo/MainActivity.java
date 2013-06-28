@@ -74,6 +74,8 @@ public class MainActivity extends Activity {
 				// Getting an instance of PackageManager
 				PackageManager pm = getPackageManager();
 				
+			
+				
 				// Querying Package Manager
 				List<ResolveInfo> activities = pm.queryIntentActivities(intent, 0);
 				
@@ -151,7 +153,21 @@ public class MainActivity extends Activity {
 	                		}else{
 	                			Log.i("JSON NO MATCH", " ");
 	                		}
+	                		
+	                		if (text.get(k).toString().compareTo("blue") ==0){
+	                			publish(channel, text.get(k).toString());
+	                		}
+	                		
+	                		if (text.get(k).toString().compareTo("red") ==0){
+	                			publish(channel, text.get(k).toString());
+	                		}
 
+	                		if (text.get(k).toString().compareTo("green") ==0){
+	                			publish(channel, text.get(k).toString());
+	                		}
+	                		if (text.get(k).toString().compareTo("disconnect") ==0){
+	                			channel = null;
+	                		}
 	                	}
 	                }else{
 	                	Log.i("Channel: ",  "No Channel");
@@ -159,6 +175,12 @@ public class MainActivity extends Activity {
 	            }
 	            break;
 	    }
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Voice recognition Demo...");
+        startActivityForResult(intent, SPEECHTOTEXT);
+        
     }
 
     @Override
@@ -231,7 +253,30 @@ public class MainActivity extends Activity {
 		}
 	}
 	
-	private void subscribe(String inChannel) {
+	private void publish(final String inChannel, final String message){
+		Hashtable<String, String> args = new Hashtable<String, String>(1);
+		
+		if (args.get("message") == null) {
+			args.put("message", message);
+		}
+		
+		args.put("channel", inChannel); // Channel Name
+		
+		pubnub.publish(args, new Callback() {
+			public void successCallback(String channel,
+					Object message) {
+				notifyUser("PUBLISH : " + message);
+			}
+
+			public void errorCallback(String channel,
+					Object message) {
+				notifyUser("PUBLISH : " + message);
+			}
+		});
+	}
+
+	
+	private void subscribe(final String inChannel) {
 //		
 		
 		Hashtable<String, String> args = new Hashtable<String, String>(1);
